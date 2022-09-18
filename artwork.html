@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="image/image.jpg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />	
+    	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous">
+
+<style>
+   
+   header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition:  .3s ease background-color;
+}
+header .logo{
+    color: #363636;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+header ul{
+    position: relative;
+    display: flex;
+}
+header ul li{
+    position: relative;
+    list-style: none;
+}
+header ul li a {
+    position: relative;
+    display: inline-block;
+    margin:  015px;
+    text-decoration: none;
+    color: #363636;
+    font-weight: 700;
+}
+
+
+
+header .fa-solid{
+    display: none;
+    
+}
+
+@media(max-width: 991px){
+
+       header{
+            padding: 10px;
+        }
+       header ul{
+    display: block; 
+        }
+        .menu{
+            position: absolute;
+            background: gray;
+            height: 100vh;
+            width: 200px;
+            top: 0;
+            right: -200px;
+            text-align: left;
+            z-index: 2;
+            transition: 1s;
+        }
+        header .fa-solid{
+            display: block;
+            color: #363636;
+            margin: 10px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+        ul{
+            padding: 30px;
+        }
+        header ul li a {
+        color: white;
+        }
+}
+input{
+    display: none;
+}
+.artworkcontainer{
+    width: 100%;
+    text-align: center;
+}
+.artworkcontainer h1{
+    font-weight: normal;
+    font-size: 35px;
+    position: relative;
+    margin: 90px 0px;
+}
+.artworkcontainer h1::before{
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 3px;
+    background-color: cadetblue;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: animate 4s linear infinite;
+}
+@keyframes animate {
+    0%{
+        width: 100px;
+    }
+    50%{
+        width: 200px;
+    }
+    100%{
+        width: 100px;
+    }
+}
+.top-content{
+    background-color: lightgray;
+    width: 90%;
+    margin: 0 auto 20px auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px lightgray;
+}
+.top-content h3{
+    height: 100%;
+    background-color: mediumturquoise;
+    line-height: 60px;
+    padding: 0 30px;
+    color: white;
+}
+
+label{
+    display: inline-block;
+    height: 100%;
+    margin: 0 20px;
+    line-height: 60px;
+    font-size: 18px;
+    color: gray;
+    cursor: pointer;
+    
+}
+label:hover{
+    color: black;;
+}
+.artworkphoto{
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+.pic{
+    position: relative;
+    height: 230px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+    transition: .5s;
+}
+.pic img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: .5s;
+}
+#check1:checked ~ .artworkcontainer .artworkphoto .pic{
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+    transition: .5s;
+}
+#check1:checked ~ .artworkcontainer .artworkphoto .photography{
+    transform: scale(1);
+    opacity: 1;
+    position: relative;
+
+}
+#check1:checked ~ .artworkcontainer .artworkphoto .sketches,
+#check1:checked ~ .artworkcontainer .artworkphoto .brand,
+#check1:checked ~ .artworkcontainer .artworkphoto .innovative,
+#check1:checked ~ .artworkcontainer .artworkphoto .magazine{
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    transition: 0;
+}
+    
+
+#check2:checked ~ .artworkcontainer .artworkphoto .brand{
+    transform: scale(1);
+    opacity: 1;
+    position: relative;
+
+}
+#check2:checked ~ .artworkcontainer .artworkphoto .sketches,
+#check2:checked ~ .artworkcontainer .artworkphoto .photography,
+#check2:checked ~ .artworkcontainer .artworkphoto .innovative,
+#check2:checked ~ .artworkcontainer .artworkphoto .magazine{
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    transition: 0;
+}
+
+#check3:checked ~ .artworkcontainer .artworkphoto .sketches{
+    transform: scale(1);
+    opacity: 1;
+    position: relative;
+
+}
+#check3:checked ~ .artworkcontainer .artworkphoto .photography,
+#check3:checked ~ .artworkcontainer .artworkphoto .brand,
+#check3:checked ~ .artworkcontainer .artworkphoto .innovative,
+#check3:checked ~ .artworkcontainer .artworkphoto .magazine
+{
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    transition: 0;
+}
+
+#check4:checked ~ .artworkcontainer .artworkphoto .innovative{
+    transform: scale(1);
+    opacity: 1;
+    position: relative;
+
+}
+#check4:checked ~ .artworkcontainer .artworkphoto .sketches,
+#check4:checked ~ .artworkcontainer .artworkphoto .brand,
+#check4:checked ~ .artworkcontainer .artworkphoto .photography,
+#check4:checked ~ .artworkcontainer .artworkphoto .magazine{
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    transition: 0;
+}
+
+#check5:checked ~ .artworkcontainer .artworkphoto .magazine{
+    transform: scale(1);
+    opacity: 1;
+    position: relative;
+
+}
+#check5:checked ~ .artworkcontainer .artworkphoto .sketches,
+#check5:checked ~ .artworkcontainer .artworkphoto .brand,
+#check5:checked ~ .artworkcontainer .artworkphoto .photography,
+#check5:checked ~ .artworkcontainer .artworkphoto .innovative{
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    transition: 0;
+}
+
+@media(max-width: 900px){
+    .artworkphoto{
+        display: block;
+    }
+    .artworkphoto .pic{
+        margin-top: 20px;
+    }
+    label{
+    display: block;
+    }
+    .top-content{
+        display: block;
+        margin-bottom: 300px;
+    }
+}
+
+
+
+
+footer{
+    display: flex;
+    margin-top: 200px;
+    align-items: center;
+    justify-content: flex-end;
+}
+.footer{
+    position: relative;
+    width: 100%;
+    background: #3586ff;
+    min-height: 100px;
+    padding: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.footer .socialicon,
+.footer .footermenu{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+.footer .socialicon li,
+.footer .footermenu li{
+    list-style: none;
+}
+.footer .socialicon li a
+{
+    font-size: 2em;
+    color: #363636;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+}
+.footer .socialicon li a:hover{
+    transform: translateY(-10px);
+}
+
+.footer .footermenu li a{
+    font-size: 1.5em;
+    color: #363636;
+    margin: 0 10px;
+    display: inline-block;
+    text-decoration: none;
+    opacity: 0.75;
+}
+.footer .footermenu li a:hover{
+    opacity: 1;
+}
+.footer p{
+    color: #363636;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+.footer .wave{
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url("image/wave.png");
+    background-size: 1000px 100px;
+    
+}
+.footer .wave#wave1{
+    z-index: 999;
+    opacity: 1;
+    bottom: 0;
+    animation: animatewave 4s linear infinite;
+}
+.footer .wave#wave2{
+    z-index: 998;
+    opacity: 0.5;
+    bottom: 10px;
+    animation: animatewave2 4s linear infinite;
+}
+
+.footer .wave#wave3{
+    z-index: 999;
+    opacity: 0.2;
+    bottom: 15px;
+    animation: animatewave 3s linear infinite;
+}
+.footer .wave#wave4{
+    z-index: 998;
+    opacity: 0.7;
+    bottom: 20px;
+    animation: animatewave2 2s linear infinite;
+}
+
+@keyframes animatewave {
+    0%{
+        background-position-x: 1000px;
+    }
+    100%{
+        background-position-x: 0px;
+    }
+}
+@keyframes animatewave2 {
+    0%{
+        background-position-x: 0px;
+    }
+    100%{
+        background-position-x: 1000px;
+    }
+}
+
+</style>
+
+
+</head>
+<body>
+    <header id="header">
+        
+        <div class="logo">RMC</div>
+        <div class="menu" id="menulink">
+            <i class="fa-solid fa-xmark"  onclick="hideMenu()"></i>
+        <ul class>         
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="artwork.html">Artwork</a></li>
+            <li><a href="myjourney.html">My Journey</a></li>
+            <li><a href="myfuture,.html">My Future</a></li>
+        </ul>
+        </div>
+        <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+    </header>
+<input type="radio" name="Photos" id="check1" checked>
+<input type="radio" name="Photos" id="check2">
+<input type="radio" name="Photos" id="check3">
+<input type="radio" name="Photos" id="check4">
+<input type="radio" name="Photos" id="check5">
+
+<div class="artworkcontainer">
+    <h1> Artwork</h1>
+    <div class="top-content">
+        <h3>Photos</h3>
+        <label for="check1">Photography</label>
+        <label for="check2">Brand Identity</label>
+        <label for="check3">Brochure</label>
+        <label for="check4">Innovative Design</label>
+        <label for="check5">Magazine</label>
+    </div>
+    
+    <div class="artworkphoto">
+        <div class="pic photography">
+            <img src="image/p1.jpg" alt=""></img>
+        </div>
+        <div class="pic photography">
+            <img src="image/p2.jpg" alt=""></img>
+        </div>
+        <div class="pic photography">
+            <img src="image/p3.jpg" alt=""></img>
+        </div>
+        
+        <div class="pic photography">
+            <img src="image/p4.jpg" alt=""></img>
+        </div>
+        <div class="pic photography">
+            <img src="image/p5.jpg" alt=""></img>
+        </div>
+        <div class="pic photography">
+            <img src="image/p6.jpg" alt=""></img>
+        </div>
+        <div class="pic photography">
+            <img src="image/p7.jpg" alt=""></img>
+        </div>
+        <div class="pic photography">
+            <img src="image/p8.jpg" alt=""></img>
+        </div>
+        <div class="pic photography">
+            <img src="image/p9.jpg" alt=""></img>
+        </div>
+        <div class="pic photography">
+            <img src="image/p10.jpg" alt=""></img>
+        </div>
+        <div class="pic photography">
+            <img src="image/p11.jpg" alt=""></img>
+        </div>
+        <div class="pic photography">
+            <img src="image/p12.jpg" alt=""></img>
+        </div>
+         
+        
+         <div class="pic brand">
+            <img src="image/bi1.jpg" alt=""></img>
+        </div>
+        <div class="pic brand">
+            <img src="image/bi2.jpg" alt=""></img>
+        </div>
+        <div class="pic brand">
+            <img src="image/bi3.jpg" alt=""></img>
+        </div>
+       <div class="pic brand">
+            <img src="image/bi4.jpg" alt=""></img>
+        </div>
+        <div class="pic brand">
+            <img src="image/bi5.jpg" alt=""></img>
+        </div>
+        <div class="pic brand">
+            <img src="image/bi6.jpg" alt=""></img>
+        </div>
+        <div class="pic brand">
+            <img src="image/bi7.jpg" alt=""></img>
+        </div>
+        <div class="pic sketches">
+            <img src="image/gallery6.jpg" alt=""></img>
+        </div>
+        <div class="pic sketches">
+            <img src="image/w.jpg" alt=""></img>
+        </div>
+        <div class="pic innovative">
+            <img src="image/id1.png" alt=""></img>
+        </div>
+        <div class="pic innovative">
+            <img src="image/id2.png" alt=""></img>
+        </div>
+        <div class="pic innovative">
+            <img src="image/id3.png" alt=""></img>
+        </div>
+        
+        <div class="pic magazine">
+          <a href="https://drive.google.com/file/d/1OH6dP2uYF0mSrt3hUFSpZhYLNmX05Z3n/view?usp=drivesdk" target="_blank"><img src="image/gallery5.png" alt=""></img></a>
+        </div>
+        
+    </div>    
+    
+</div>
+
+
+    <script>
+        var menulink = document.getElementById("menulink");
+        
+        function showMenu() {
+        menulink.style.right = "0";
+        }
+        function hideMenu() {
+        menulink.style.right = "-200px";7
+        }
+       
+    </script>
+    <script>
+        document.addEventListener('scroll', () => {
+        var scroll_position = window.scrollY;
+        if(scroll_position > 250) {
+            header.style.backgroundColor = "#f0f0f0"
+        } else {
+         header.style.backgroundColor ="transparent"
+            
+        }
+        })
+</script>
+
+<footer>
+    <div class="footer">
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+             <div class="wave" id="wave2"></div>
+              <div class="wave" id="wave3"></div>
+               <div class="wave" id="wave4"></div>
+             
+        </div>
+        <ul class="socialicon">
+            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+        </ul>
+        <ul class="footermenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="artwork.html">Artwork</a></li>
+            <li><a href="myjourney.html">My Journey</a></li>
+            <li><a href="myfuture.html">My Future</a></li>
+        </ul>
+        <p>@2022 RMC / All Rights Reserved</p>
+    </div>
+</footer>
+    
+
+</body>
+</html>
